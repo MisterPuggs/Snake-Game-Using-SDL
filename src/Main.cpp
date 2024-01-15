@@ -1,14 +1,20 @@
+#define SDL_MAIN_HANDLED
+#define rootpath "C:/Users/cew05/OneDrive/Documents/GitHub/Basic-GUI-in-CPP"
+
 #include <iostream>
 #include <vector>
 #include "SDL.h"
 #include "SDL_image.h"
+#include "SDL_timer.h"
+
+
 
 class Player
 {
     private:
         SDL_Rect selfRect {};
-        const char* imgPath = "Images/BluePlayerSquare.png";
-        int speed = 50;
+        std::string imgPath = "/Resources/PlaceholderImages/BluePlayerSquare.png";
+        int speed = 20;
         SDL_Texture* texture;
 
     public:
@@ -16,31 +22,35 @@ class Player
         {
             selfRect.x = initx;
             selfRect.y = inity;
-            selfRect.w = 50;
-            selfRect.h = 50;
+            selfRect.w /= 6;
+            selfRect.h /= 6;
 
             // Create Texture
-            surface = IMG_Load(imgPath);
+            surface = IMG_Load((rootpath+imgPath).c_str());
             texture = SDL_CreateTextureFromSurface(renderer, surface);
             SDL_FreeSurface(surface);
             SDL_QueryTexture(texture, nullptr, nullptr, &selfRect.w, &selfRect.h);
         }
-        void UpdatePos(std::vector<int> const &moveby)
+        void UpdatePos(std::vector<int> const &moveby, std::vector<int> const &bounds)
         {
-            selfRect.x = moveby[0]*speed + selfRect.w/2;
-            selfRect.y = moveby[1]*speed + selfRect.h/2;
+            selfRect.x += ((moveby[0]*speed));
+            selfRect.y += ((moveby[1]*speed));
+            selfRect.x = (bounds[0] > selfRect.x) ? selfRect.x = bounds[0] : selfRect.x;
+            selfRect.x = (bounds[1] < selfRect.x) ? selfRect.x = bounds[1] : selfRect.x;
+            selfRect.y = (bounds[2] > selfRect.y) ? selfRect.y = bounds[2] : selfRect.y;
+            selfRect.y = (bounds[3] < selfRect.y) ? selfRect.y = bounds[3] : selfRect.y;
         }
         void Display(SDL_Renderer* &renderer)
         {
+            SDL_RenderClear(renderer);
             SDL_RenderCopy(renderer, texture, nullptr, &selfRect);
             SDL_RenderPresent(renderer);
         }
         std::vector<int> GetPos() { return {selfRect.x, selfRect.y}; }
         void SetRectDimensions() { selfRect.w = 50; selfRect.h = 50; }
-        SDL_Texture* GetTexture() { return texture;}
 };
 
-int main(int argc, char* argv[])
+int main()
 {
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
         printf("error initializing SDL: %s\n", SDL_GetError());
@@ -64,6 +74,7 @@ int main(int argc, char* argv[])
     while(running)
     {
         SDL_Event event;
+        std::vector<int> dir {0, 0};
 
         // Manage Events
         while(SDL_PollEvent(&event))
@@ -78,21 +89,28 @@ int main(int argc, char* argv[])
                     switch (event.key.keysym.scancode)
                     {
                         case SDL_SCANCODE_W:
-                            player.UpdatePos({0,-1});
+                            dir = {dir[0], dir[1]-1};
+                            break;
                         case SDL_SCANCODE_A:
-                            player.UpdatePos({-1,0});
+                            dir = {dir[0]-1, dir[1]};
+                            break;
                         case SDL_SCANCODE_S:
-                            player.UpdatePos({0,1});
+                            dir = {dir[0], dir[1]+1};
+                            break;
                         case SDL_SCANCODE_D:
-                            player.UpdatePos({1,0});
+                            dir = {dir[0]+1, dir[1]};
+                            break;
                         default:
                             break;
+
                     }
             }
 
-            SDL_RenderClear(rend);
-            player.Display(rend);
         }
+        player.UpdatePos(dir, {0, 500, 0, 500});
+        player.Display(rend);
+        std::cout << player.GetPos()[0] << "x " << player.GetPos()[1] << "y\n";
+        SDL_Delay(1000/60);
     }
 
 

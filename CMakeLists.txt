@@ -1,17 +1,18 @@
-cmake_minimum_required(VERSION 3.27)
+cmake_minimum_required(VERSION 3.10)
 project(Basic_GUI_in_CPP)
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake_modules)
 
-find_package(SDL2 REQUIRED)
-include_directories(${SDL2_INCLUDE_DIR})
+# Specify the path to SDL2 and SDL2_image installations
+set(SDL2_INCLUDE_DIRS "C:/Libs/SDL2-2.28.5/include")
+set(SDL2_LIBRARIES "C:/Libs/SDL2-2.28.5/lib/x64")
+set(SDL2_IMAGE_INCLUDE_DIRS "C:/Libs/SDL2_image-2.8.2/include")
+set(SDL2_IMAGE_LIBRARIES "C:/Libs/SDL2_image-2.8.2/lib/x64")
 
-find_package(SDL2_IMAGE REQUIRED)
-include_directories(${SDL2_IMAGE_INCLUDE_DIR})
+# Include directories
+include_directories(${SDL2_INCLUDE_DIRS} ${SDL2_IMAGE_INCLUDE_DIRS})
 
-add_executable(Basic_GUI_in_CPP
-        src/Main.cpp)
+add_executable(Basic_GUI_in_CPP src/Main.cpp)
 
-target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARY})
-target_link_libraries(${PROJECT_NAME} ${SDL2_IMAGE_LIBRARY})
+target_link_libraries(${PROJECT_NAME} "${SDL2_LIBRARIES}/SDL2.lib" "${SDL2_IMAGE_LIBRARIES}/SDL2_image.lib")
