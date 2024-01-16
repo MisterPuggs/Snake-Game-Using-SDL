@@ -1,0 +1,3 @@
+C:/Users/cew05/OneDrive/Documents/GitHub/Basic-GUI-in-CPP/out/build/x64-Debug/CMakeFiles/Basic_GUI_in_CPP.dir
+C:/Users/cew05/OneDrive/Documents/GitHub/Basic-GUI-in-CPP/out/build/x64-Debug/CMakeFiles/edit_cache.dir
+C:/Users/cew05/OneDrive/Documents/GitHub/Basic-GUI-in-CPP/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir

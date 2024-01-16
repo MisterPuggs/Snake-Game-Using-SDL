@@ -56,6 +56,20 @@ build CMakeFiles/Basic_GUI_in_CPP.dir/src/Main.cpp.obj: CXX_COMPILER__Basic_GUI_
   OBJECT_DIR = CMakeFiles\Basic_GUI_in_CPP.dir
   OBJECT_FILE_DIR = CMakeFiles\Basic_GUI_in_CPP.dir\src
 
+build CMakeFiles/Basic_GUI_in_CPP.dir/src/SnakeElements.cpp.obj: CXX_COMPILER__Basic_GUI_in_CPP_unscanned_Debug C$:/Users/cew05/OneDrive/Documents/GitHub/Basic-GUI-in-CPP/src/SnakeElements.cpp || cmake_object_order_depends_target_Basic_GUI_in_CPP
+  DEP_FILE = CMakeFiles\Basic_GUI_in_CPP.dir\src\SnakeElements.cpp.obj.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -IC:/Libs/SDL2-2.28.5/include -IC:/Libs/SDL2_image-2.8.2/include
+  OBJECT_DIR = CMakeFiles\Basic_GUI_in_CPP.dir
+  OBJECT_FILE_DIR = CMakeFiles\Basic_GUI_in_CPP.dir\src
+
+build CMakeFiles/Basic_GUI_in_CPP.dir/src/Core.cpp.obj: CXX_COMPILER__Basic_GUI_in_CPP_unscanned_Debug C$:/Users/cew05/OneDrive/Documents/GitHub/Basic-GUI-in-CPP/src/Core.cpp || cmake_object_order_depends_target_Basic_GUI_in_CPP
+  DEP_FILE = CMakeFiles\Basic_GUI_in_CPP.dir\src\Core.cpp.obj.d
+  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
+  INCLUDES = -IC:/Libs/SDL2-2.28.5/include -IC:/Libs/SDL2_image-2.8.2/include
+  OBJECT_DIR = CMakeFiles\Basic_GUI_in_CPP.dir
+  OBJECT_FILE_DIR = CMakeFiles\Basic_GUI_in_CPP.dir\src
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Basic_GUI_in_CPP
@@ -64,7 +78,7 @@ build CMakeFiles/Basic_GUI_in_CPP.dir/src/Main.cpp.obj: CXX_COMPILER__Basic_GUI_
 #############################################
 # Link the executable Basic_GUI_in_CPP.exe
 
-build Basic_GUI_in_CPP.exe: CXX_EXECUTABLE_LINKER__Basic_GUI_in_CPP_Debug CMakeFiles/Basic_GUI_in_CPP.dir/src/Main.cpp.obj | C$:/Libs/SDL2-2.28.5/lib/x64/SDL2.lib C$:/Libs/SDL2_image-2.8.2/lib/x64/SDL2_image.lib
+build Basic_GUI_in_CPP.exe: CXX_EXECUTABLE_LINKER__Basic_GUI_in_CPP_Debug CMakeFiles/Basic_GUI_in_CPP.dir/src/Main.cpp.obj CMakeFiles/Basic_GUI_in_CPP.dir/src/SnakeElements.cpp.obj CMakeFiles/Basic_GUI_in_CPP.dir/src/Core.cpp.obj | C$:/Libs/SDL2-2.28.5/lib/x64/SDL2.lib C$:/Libs/SDL2_image-2.8.2/lib/x64/SDL2_image.lib
   FLAGS = -g
   LINK_LIBRARIES = C:/Libs/SDL2-2.28.5/lib/x64/SDL2.lib  C:/Libs/SDL2_image-2.8.2/lib/x64/SDL2_image.lib  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Basic_GUI_in_CPP.dir

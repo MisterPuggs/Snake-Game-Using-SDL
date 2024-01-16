@@ -13,6 +13,12 @@ set(SDL2_IMAGE_LIBRARIES "C:/Libs/SDL2_image-2.8.2/lib/x64")
 # Include directories
 include_directories(${SDL2_INCLUDE_DIRS} ${SDL2_IMAGE_INCLUDE_DIRS})
 
-add_executable(Basic_GUI_in_CPP src/Main.cpp)
+add_executable(Basic_GUI_in_CPP
+        src/Main.cpp
+        src/SnakeElements.cpp
+        src/IncludeElements.h
+        src/SnakeElements.h
+        src/Core.h
+        src/Core.cpp)
 
 target_link_libraries(${PROJECT_NAME} "${SDL2_LIBRARIES}/SDL2.lib" "${SDL2_IMAGE_LIBRARIES}/SDL2_image.lib")
