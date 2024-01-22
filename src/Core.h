@@ -8,19 +8,22 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_timer.h>
+#include <SDL_ttf.h>
+#include <ctime>
 
-// Define Renderer and Surface objects only once
+// Global Accessible
 extern SDL_Renderer* renderer;
 extern SDL_Surface* surface;
-
+extern bool running;
 
 class Window
 {
     private:
-        SDL_Window* win = nullptr;
         Uint32 render_flags = SDL_RENDERER_ACCELERATED;
-        int winwidth;
-        int winheight;
+        int winwidth, winheight;
+        int sqwidth, sqheight;
+        int rows, columns;
+        int bufferx, buffery;
 
         //Vars for creating grid visuals
         SDL_Color border {200, 255, 200, 255};
@@ -28,8 +31,14 @@ class Window
         SDL_Color darkBg {0, 155, 0, 255};
 
     public:
-        explicit Window(const char* title = "New Window", int width = 500, int height = 500);
-        void CheckerDisplay(int width, int height, int rows = 1, int columns = 1);
-        SDL_Window* WinObject() { return win; }
+        Window(const char* title, int width, int height, int sqwidth, int sqheight);
+        void CheckerDisplay(int rows = 1, int columns = 1);
         std::vector<int> GetWinSize() { return {winwidth, winheight}; }
+        std::vector<int> GetSquareSize() {return {sqwidth, sqheight}; }
+        std::vector<int> GetGridDimensions() { return {rows, columns}; }
+        std::vector<int> GetBufferDimensions() { return {bufferx, buffery}; }
+        static void Render();
 };
+
+// Global Accessible Window
+extern Window win;
