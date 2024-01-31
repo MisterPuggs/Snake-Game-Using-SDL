@@ -12,6 +12,8 @@ Window::Window(const char* title, int width, int height, int sqwidth, int sqheig
         return;
     }
 
+    TTF_Init();
+
     running = true;
     SDL_Window* window = SDL_CreateWindow(title, // creates a window
                            SDL_WINDOWPOS_CENTERED,
@@ -60,4 +62,21 @@ void Window::CheckerDisplay(int numrows, int numcolumns)
         altbg = !altbg;
     }
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+}
+
+Button::Button(std::string &label)
+{
+    this->label = label;
+    fg = {255, 255, 255, 255};
+    bg = {};
+}
+
+void Button::Display()
+{
+
+}
+
+void SetPosition(int x, int y)
+{
+
 }
