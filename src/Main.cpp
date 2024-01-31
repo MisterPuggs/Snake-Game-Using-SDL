@@ -84,10 +84,11 @@ void MenuLoop()
         win.CheckerDisplay(16, 16);
 
         SDL_Rect menubuttonrect {};
-        std::string fontpath = "Resources/Fonts/CookieCrisp/CookieCrisp-L36ly.ttf";
-        TTF_Font* textfont = TTF_OpenFont("Sans.ttf" , 24);
+        std::string fontpath = "../Resources/Fonts/CookieCrisp/CookieCrisp-L36ly.ttf";
+        TTF_Font* textfont = TTF_OpenFont(fontpath.c_str() , 500);
         SDL_Color white {255, 255, 255, 255};
         std::string labels[2] {"play", "Quit"};
+        SDL_Texture* label;
 
         int bufferx = win.GetWinSize()[0] / 5;
         int buffery = win.GetWinSize()[1] / 5;
@@ -102,8 +103,8 @@ void MenuLoop()
             SDL_SetRenderDrawColor(renderer, 50, 0, 50, 255);
             SDL_RenderDrawRect(renderer, &menubuttonrect);
 
-            surface = TTF_RenderText_Solid(textfont, labels[i].c_str(), white);
-            SDL_Texture* label = SDL_CreateTextureFromSurface(renderer, surface);
+            surface = TTF_RenderText_Blended(textfont, labels[i].c_str(), white);
+            label = SDL_CreateTextureFromSurface(renderer, surface);
             SDL_RenderCopy(renderer, label, nullptr, &menubuttonrect);
             SDL_FreeSurface(surface);
         }

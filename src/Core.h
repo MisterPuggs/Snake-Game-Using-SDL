@@ -16,6 +16,19 @@ extern SDL_Renderer* renderer;
 extern SDL_Surface* surface;
 extern bool running;
 
+class Button
+{
+    private:
+        SDL_Color fg, bg;
+        std::string label;
+        SDL_Rect selfRect {};
+
+    public:
+        Button(std::string &label);
+        void SetPosition(int x = 0, int y = 0);
+        void Display();
+};
+
 class Window
 {
     private:
