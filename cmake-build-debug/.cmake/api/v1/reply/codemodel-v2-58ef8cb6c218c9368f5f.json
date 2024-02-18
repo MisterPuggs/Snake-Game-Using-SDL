@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/cew05/OneDrive/Documents/GitHub/Basic-GUI-in-CPP/cmake-build-debug",
-		"source" : "C:/Users/cew05/OneDrive/Documents/GitHub/Basic-GUI-in-CPP"
+		"build" : "C:/Github/Basic-GUI-in-CPP/cmake-build-debug",
+		"source" : "C:/Github/Basic-GUI-in-CPP"
 	},
 	"version" : 
 	{
